@@ -1,8 +1,14 @@
 import React from "react";
-import styles from "./display.module.css"
+import displayStyles from "./display.module.css"
 
 const Display = (props) => {
-  return <div>{ props.selectNumber }</div>;
+  return (
+    <div className={displayStyles.display}>
+      <div className={displayStyles.displayNumber}>
+        {props.selectNumber}
+      </div>
+    </div>
+  )
 };
 
 export default Display

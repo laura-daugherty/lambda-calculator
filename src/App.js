@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./App.css";
 
 
+
 import Numbers from "./components/ButtonComponents/NumberButtons/Numbers"
 import Operators from "./components/ButtonComponents/OperatorButtons/Operators"
 import Specials from "./components/ButtonComponents/SpecialButtons/Specials"
@@ -40,7 +41,7 @@ function App() {
     <div className="container">
       <Logo />
       <div className="App">
-        <Display className="Display" selectNumber={ selectNumber }/>
+        <Display selectNumber={ selectNumber }/>
         <Numbers numberHandler={ numberHandler }/>
         <Specials />
         <Operators />
