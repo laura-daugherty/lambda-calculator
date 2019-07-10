@@ -1,0 +1,9 @@
+.logoContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+}
+.logo {
+  width: 110px;
+}
