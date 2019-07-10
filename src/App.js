@@ -14,21 +14,43 @@ import Display from "./components/DisplayComponents/Display"
 import Logo from "./components/DisplayComponents/Logo";
 
 function App() {
-  const [selectNumber, setSelectNumber] = useState(null)
-  const [selectOperator, setSelectOperator] = useState(null)
-  const [total, setTotal] = useState(selectNumber)
+  const [firstNumber, setFirstNumber] = useState("")
+  const [secondNumber, setSecondNumber] = useState("")
+  const [selectedOperator, setSelectedOperator] = useState("")
+  const [total, setTotal] = useState("")
 
-  const operatorHandler = (operator) => {
-    setSelectOperator(operator)
+  const selectOperator = (operator) => {
+    if ( selectedOperator === "" ) {
+      setSelectedOperator(operator)
+    } if ( operator === "=" ) {
+      console.log("showtotal", {showTotal})
+      showTotal()
+    }
+    else {}
   }
 
-  const numberHandler = (number) => {
-    setSelectNumber(number)
+  const selectNumber = (number) => {
+    if ( firstNumber === "" ) {
+      setFirstNumber(number)
+    } else {
+      setSecondNumber(number)
+    }
   }
 
-  const totalHandler = (selectNumber, selectOperator) => {
-    setTotal( {} )
+  // const selectFirstNumber = (firstNumber) => {
+  //   setFirstNumber(firstNumber)
+  // }
+  // const selectSecondNumber = (secondNumber) => {
+  //   setSecondNumber(secondNumber)
+  // }
+
+  const showTotal = () => {
+    setTotal(
+      eval(`${firstNumber} ${selectedOperator} ${secondNumber}`)
+    ) 
   }
+
+  console.log("selectedOperator", selectedOperator)
 
 
   // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
@@ -36,15 +58,25 @@ function App() {
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
-  console.log("current selectNumber", selectNumber)
   return (
     <div className="container">
       <Logo />
       <div className="App">
-        <Display selectNumber={ selectNumber }/>
-        <Numbers numberHandler={ numberHandler }/>
+        <Display 
+          showTotal={ showTotal }
+          total={ total }
+          firstNumber={ firstNumber }
+          secondNumber={ secondNumber }
+          selectedOperator={ selectedOperator }
+        />
+        <Numbers 
+          // selectFirstNumber={ selectFirstNumber } selectSecondNumber={ selectSecondNumber }
+          selectNumber={ selectNumber }
+        />
         <Specials />
-        <Operators />
+        <Operators 
+          selectOperator={ selectOperator }
+        />
 
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
       </div>

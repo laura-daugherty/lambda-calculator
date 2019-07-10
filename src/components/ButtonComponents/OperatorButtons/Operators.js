@@ -7,8 +7,8 @@ import OperatorButton from "./OperatorButton"
 import { operators } from "/Users/lauradaugherty/Lambda Projects/lambda-calculator/src/data.js"
 
 
-const Operators = () => {
-  const [] = useState( [operators] )
+const Operators = (props) => {
+  const [operatorsArray] = useState( [operators] )
 
   // STEP 2 - add the imported data to state
   return (
@@ -19,8 +19,12 @@ const Operators = () => {
 
         {operators.map((operator) => { 
           return (
-            <OperatorButton key={operator.char} operator={operator}/>
-        )
+            <OperatorButton 
+              key={operator.char} 
+              operator={operator} 
+              selectOperator={props.selectOperator}
+            />
+          )
         })}
     </div>
   );
