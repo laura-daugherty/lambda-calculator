@@ -22,18 +22,18 @@ function App() {
   const selectOperator = (operator) => {
     if ( selectedOperator === "" ) {
       setSelectedOperator(operator)
-    } if ( operator === "=" ) {
+    } 
+    if ( operator === "=" ) {
       console.log("showtotal", {showTotal})
       showTotal()
     }
-    else {}
   }
 
   const selectNumber = (number) => {
-    if ( firstNumber === "" ) {
-      setFirstNumber(number)
+    if ( selectedOperator === "" ) {
+      setFirstNumber(`${firstNumber}${number}`)
     } else {
-      setSecondNumber(number)
+      setSecondNumber(`${secondNumber}${number}`)
     }
   }
 
@@ -45,6 +45,9 @@ function App() {
   // }
 
   const showTotal = () => {
+    console.log("firstNum",{firstNumber})
+    console.log("secondNum",{secondNumber})
+    console.log("Operator",{selectedOperator})
     setTotal(
       eval(`${firstNumber} ${selectedOperator} ${secondNumber}`)
     ) 
